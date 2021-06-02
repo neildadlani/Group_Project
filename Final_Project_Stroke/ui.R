@@ -15,9 +15,13 @@ shinyUI(fluidPage(
         tabPanel("Home"),
         tabPanel("About Us", 
                  textOutput("annadescription"),
+                 
                  textOutput("anokhidescription"), 
+                 
                  textOutput("ishitadescription"),
+                 
                  textOutput("neildescription")),
+        
         tabPanel("Male vs. Female", 
                  sidebarLayout(
                      sidebarPanel(radioButtons("color", label="Bar Graph Color",
@@ -29,7 +33,6 @@ shinyUI(fluidPage(
                                                               "Orange" = "darkorange",
                                                               "Red"    = "red2"),
                                                selected = "violet"),
-                                  uiOutput("male_or_female"),
                                   uiOutput("selectAge")
                      ),
                      
@@ -40,7 +43,10 @@ shinyUI(fluidPage(
                      )
                  )),
         tabPanel("Glucose", plotOutput("linegraph")),
-        tabPanel("Interactive 3"),
+        tabPanel("Table",
+                 dataTableOutput("data2"),
+                 uiOutput("smokingStatus")
+                 ),
         tabPanel("Summary")
     )
 ))
