@@ -74,7 +74,7 @@ shinyServer(function(input, output) {
 # })
 
 output$distPlot <- renderPlot({
-    ggplot(data, aes(gender))+
+    ggplot(changed_data(), aes(gender))+
         geom_bar(fill = input$color, na.rm=TRUE)+
         labs(title = "Stroke in Male vs Female")
 })
@@ -94,6 +94,38 @@ output$linegraph <- renderPlot({
         
 })
 
+changed_data <- reactive({
+    stroke_data %>% 
+        select(gender, stroke, age) %>% 
+        filter(age %in% input$years)
+})
+
+output$selectAge <- renderUI({
+    sliderInput("years",
+                "Age:",
+                min = 0,
+                max = 82,
+                value = 50)
+})
+
+output$annadescription <- renderText({
+    paste0("Anna Shade: I am a first-year student who grew up within 30 minutes of the UW Seattle campus my whole life. 
+               I am undeclared for a major but have an interest in Informatics or something within the healthcare industry. 
+               I love playing volleyball, hanging out with my friends, and binge-watching the Marvel movies.")
+})
+
+output$anokhidescription <- renderText({
+    paste0("Anokhi Shah: ")
+})
+
+output$ishitadescription <- renderText({
+    paste0("Ishita Saxena: ")
+})
+
+output$neildescription <- renderText({
+    paste0("Neil Dadlani: A dedicated and self motivated freshman focusing to major in Informatics and Economics.
+               Born and raised in Dubai. Enjoys playing soccer on the weekends and cooking in the evenings. ")
+})
 
 # output$scatterplot <- renderPlot({
 #     ggplot(data, aes(bmi, heart_disease))+
