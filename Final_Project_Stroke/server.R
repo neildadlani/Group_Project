@@ -50,7 +50,9 @@ shinyServer(function(input, output) {
     output$distPlot <- renderPlot({
         ggplot(changed_data(), aes(gender))+
             geom_bar(fill = input$color, na.rm=TRUE)+
-            labs(title = "Stroke in Male vs Female")
+            labs(x = "Gender",
+                 y = "Count",
+                 title = "Stroke in Males vs Females")
     })
     
     changed_data <- reactive({
@@ -138,7 +140,7 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
     #Outputs About us Tab Data
     
     output$annadescription <- renderText({
-        paste("Anna Shade: I am a firstyear student who grew up within 30 minutes of the UW Seattle campus my whole life. 
+        paste("Anna Shade: I am a first year student who grew up within 30 minutes of the UW Seattle campus my whole life. 
                I am undeclared for a major, but have an interest in Informatics or something within the healthcare industry. 
                I love playing with my two puppies, volleyball, and binge-watching the Marvel movies.")
     })
@@ -161,5 +163,23 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
                Born and raised in Dubai. Enjoys playing soccer on the weekends and cooking in the evenings. ")
     })
     
+    output$summarypattern <- renderText({
+        paste("This is where I describe a pattern in the data.")
+    })
     
+    output$summaryevidence <- renderText({
+        paste("This is where I use evidence to prove this pattern.")
+    })
+    
+    output$summaryimplications <- renderText({
+        paste("This is where I elaborate on the implications of these findings.")
+    })
+    
+    output$summarydataquality <- renderText({
+        paste("This is where I describe the quality of the data.")
+    })
+    
+    output$summaryfutureideas <- renderText({
+        paste("This is where future ideas about the project goes.")
+    })
 })

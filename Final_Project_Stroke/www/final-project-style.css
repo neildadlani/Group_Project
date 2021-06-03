@@ -1,3 +1,4 @@
+/*Centers and resizes image on the home page*/
 img.homepage {
   width: 400px;
   display: block;
@@ -5,6 +6,7 @@ img.homepage {
   margin-right: auto;
 }
 
+/*Centers and resizes image of Anna on about us page*/
 img.annaimage {
   width: 150px;
   display: block;
@@ -12,6 +14,22 @@ img.annaimage {
   margin-right: auto;
 }
 
+/*Centers and resizes image of Anokhi on about us page*/
+img.anokhiimage {
+  
+}
+
+/*Centers and resizes image of Ishita on about us page*/
+img.ishitaimage {
+  
+}
+
+/*Centers and resizes image of Neil on about us page*/
+img.neilimage {
+  
+}
+
+/*Places lightblue as the background color and centers all of the text*/
 body {
   background-image: url(lightblue.jpg);
   text-align: center;
