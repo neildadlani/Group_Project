@@ -1,5 +1,4 @@
-# Group_Project
-INFO 201 final group project 
+# INFO 201 Final Group Project 
 
 [Click here to reach our shinyapps project!](https://ashade2-1942000.shinyapps.io/Final_Project_Stroke/)
 
