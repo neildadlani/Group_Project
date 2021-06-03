@@ -1,26 +1,41 @@
-
-
 library(shiny)
 library(tidyverse)
 library(ggplot2)
 library(plotly)
 
-# Define UI for application that draws a histogram
+# Define UI for application that makes our Final Project App
 shinyUI(fluidPage(
-
+    theme = "final-project-style.css",
+    
     # Application title
-    titlePanel("Factors Affecting Stoke"),
-
+    titlePanel("Factors Affecting Stroke"),
+    
+    
+    # Defining Tabs
     tabsetPanel(
-        tabPanel("Home"),
+        tabPanel("Home",
+                 tags$br(textOutput("homepageData")),
+                 tags$br(textOutput("homepageAudience")),
+                 tags$img(class="homepage",
+                          src="background-image.jpg",
+                          alt="Photo for Home Page")),
         tabPanel("About Us", 
-                 textOutput("annadescription"),
-                 textOutput("anokhidescription"), 
-                 textOutput("ishitadescription"),
-                 textOutput("neildescription")),
+                 tags$br(class="annatext", 
+                        textOutput("annadescription")),
+                 tags$img(class="annaimage",
+                          src="anna-photo.jpg",
+                          alt="Anna's Photo", 
+                          align="center"),
+                 
+                 tags$br(textOutput("anokhidescription")), 
+                 
+                 tags$br(textOutput("ishitadescription")),
+                 
+                 tags$br(textOutput("neildescription"))),
+        
         tabPanel("Male vs. Female", 
                  sidebarLayout(
-                     sidebarPanel(radioButtons("color", label="Bar Graph Color",
+                     sidebarPanel(radioButtons("color", label=h3("Bar Graph Color"),
                                                choices = list("Violet" = "violet",
                                                               "Indigo" = "purple",
                                                               "Blue"   = "royalblue",
@@ -29,8 +44,9 @@ shinyUI(fluidPage(
                                                               "Orange" = "darkorange",
                                                               "Red"    = "red2"),
                                                selected = "violet"),
-                                  uiOutput("male_or_female"),
-                                  uiOutput("selectAge")
+                                  uiOutput("selectAge"),
+                                  textOutput("Number")
+                                  
                      ),
                      
                      # Show a plot of the generated distribution
@@ -39,17 +55,11 @@ shinyUI(fluidPage(
                          
                      )
                  )),
-        tabPanel("Glucose", 
-                 sidebarLayout(
-                     sidebarPanel(
-                         uiOutput("selectAge")
-                     ),
-                     
-                     mainPanel(
-                         plotOutput("linegraph")),
-                         plotOutput("glucosebmigraph"))
-                 )
+        tabPanel("Glucose vs. BMI", plotOutput("scatterplot"), uiOutput("category")),
+        tabPanel("Smoking Data",
+                 dataTableOutput("table_data"),
+                 uiOutput("smokingStatus")
         ),
-        tabPanel("Interactive 3"),
         tabPanel("Summary")
+    )
 ))

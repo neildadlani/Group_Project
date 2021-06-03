@@ -1,0 +1,18 @@
+img.homepage {
+  width: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img.annaimage {
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  background-image: url(lightblue.jpg);
+  text-align: center;
+}
