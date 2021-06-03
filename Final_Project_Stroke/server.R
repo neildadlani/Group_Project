@@ -208,10 +208,10 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
     
     output$summaryfutureideas <- renderText({
         paste("There are many more steps that could be taken to spread information on the likelihood of having a stroke. This information could 
-              benefit so many individuals in how they could benefit or change their lifestyles to help increase their odds of not having 
+              benefit so many individuals in how they could benefit or change their lives and lifestyles to help increase their odds of not having 
               a stroke in their future. Going forward for this final project there are more steps that could be taken after completing the final 
               project about spreading the apps and information so that more people outside of this class environment can benefit from the findings.
               This could be done by publishing it on a website that the public has access to, using social media to spread the information, and 
-              many other ways. ")
+              many other ways.")
     })
 })
