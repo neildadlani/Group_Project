@@ -163,10 +163,19 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
     })
     
     output$homepageQuestions <- renderText({
-        paste0 ("Questions that we will answer in this app :
-1. How age and gender play a role in increasing or decreasing the likeliness of a stroke?
-2. Exploring the correlation between change in BMI and average glucose level in the possibility of having a stroke?
-3. How does smoking influence the likeliness of suffering from a stroke?")
+        paste0("Questions that we will answer in this app:")
+    })
+    
+    output$question1 <- renderText({
+        paste("1. How age and gender play a role in increasing or decreasing the likeliness of a stroke?")
+    })
+    
+    output$question2 <- renderText({
+        paste("2. Exploring the correlation between change in BMI and average glucose level in the possibility of having a stroke?")
+    })
+    
+    output$question3 <- renderText({
+        paste("3. How does smoking influence the likeliness of suffering from a stroke?")
     })
     
     #Outputs About us Tab Data
