@@ -215,8 +215,8 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
     
     output$summaryevidence <- renderText({
         paste("You can see this in our first interactive graph, the bar graph that shows how many people of each gender experienced 
-              a stroke from this dataset. For children 6 years and younger, there are more males that experience stroke than females.
-              However, after about 6 years old, for almost every other age in the dataset, more females experienced a stroke than 
+              a stroke from this dataset. For children 8 years and younger, there are more males that experience stroke than females.
+              However, after about 8 years old, for almost every other age in the dataset, more females experienced a stroke than 
               males. We used a bar chart to easily show the difference between how many females and males had a stroke. The bar chart
               also shows how the older you are, the more likely you are to have a stroke. You can see this in the change of the y-axis 
               numbers. As you increase in age using the slider widget, you can see how the y-axis grows and the bar graph goes higher 
@@ -247,8 +247,8 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
               stroke is if there is a history of stroke in your family. There could be many individuals in this dataset that this applies to 
               that we are unaware of that play a larger role in them having had a stroke than the factors listed. The dataset also did not 
               provide us with much information on how the data was collected and what the discussion process was for including certain individuals
-              within it. This makes it hard for us to know that the data process was unbiased. Due to this, we are unsure if the implementing of 
-              including certain individuals targeted certain population groups or potentially harmed any. ")
+              within it. This was due to the World Health Organization choosing to keep personal information about the individuals confidential
+              and anonymous out of respect for them. This makes it hard to know if they targeted a specific group or left out a particular population group.")
     })
     
     output$summaryfutureideas <- renderText({
