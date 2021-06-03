@@ -47,12 +47,13 @@ shinyServer(function(input, output) {
     })
     
     #Plotting Bar Graph - Stroke vs Gender
-    output$distPlot <- renderPlot({
+    output$genderPlot <- renderPlot({
         ggplot(changed_data(), aes(gender))+
             geom_bar(fill = input$color, na.rm=TRUE)+
             labs(x = "Gender",
                  y = "Count",
-                 title = "Stroke in Males vs Females")
+                 title = "Stroke in Males vs. Females")+
+            theme(plot.title = element_text(size = 20))
     })
     
     changed_data <- reactive({
@@ -80,7 +81,8 @@ shinyServer(function(input, output) {
             geom_point(color= "red")+
             labs(title = " Average Glucose Level and BMI Correlation",
                  x= "Average Glucose Level (mg/dL)", 
-                 y= "BMI (kg/m^2)"  )
+                 y= "BMI (kg/m^2)")+
+            theme(plot.title = element_text(size = 20))
         
         
     })

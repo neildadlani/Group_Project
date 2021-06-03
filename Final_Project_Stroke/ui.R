@@ -25,25 +25,21 @@ shinyUI(fluidPage(
                  tags$br(textOutput("annadescription")),
                  tags$img(class="annaimage",
                           src="anna-photo.jpg",
-                          alt="Anna's Photo", 
-                          align="center"),
+                          alt="Anna's Photo"),
                  tags$br(textOutput("anokhidescription")),
                  tags$img(class="anokhiimage",
                           src="anokhi-photo.jpg",
-                          alt="Anokhi's Photo",
-                          align="center"),
+                          alt="Anokhi's Photo"),
                  tags$br(),
                  tags$br(textOutput("ishitadescription")),
                  tags$img(class="ishitaimage",
                           src="ishita-photo.jpg",
-                          alt="Ishita's Photo",
-                          align="center"),
+                          alt="Ishita's Photo"),
                  tags$br(),
                  tags$br(textOutput("neildescription")),
                  tags$img(class="neilimage",
                           src="neil-photo.jpg",
-                          alt="Neil's Photo",
-                          align="center"), 
+                          alt="Neil's Photo"), 
                  ),
         
         tabPanel("Male vs. Female", 
@@ -64,7 +60,7 @@ shinyUI(fluidPage(
                      
                      # Show a plot of the generated distribution
                      mainPanel(
-                         plotOutput("distPlot")
+                         plotOutput("genderPlot")
                          
                      )
                  )),
