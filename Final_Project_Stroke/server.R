@@ -164,22 +164,51 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
     })
     
     output$summarypattern <- renderText({
-        paste("This is where I describe a pattern in the data.")
+        paste("There are lots of factors that affect people having a stroke, and none of them absolutely ensure that you will 
+              have one if the factors do apply to you, but there are some patterns that increase the likelihood of you experiencing 
+              a stroke. From our dataset, you can see that the likelihood of you having a stroke is increased if you are a younger 
+              male or an older female. Our findings show that women are typically older when they experience a stroke, and as you 
+              get older in general, no matter what gender you identify with, your likelihood of experiencing a stroke grows.")
     })
     
     output$summaryevidence <- renderText({
-        paste("This is where I use evidence to prove this pattern.")
+        paste("You can see this in our first interactive graph, the bar graph that shows how many people of each gender experienced 
+              a stroke from this dataset. For children 6 years and younger, there are more males that experience stroke than females.
+              However, after about 6 years old, for almost every other age in the dataset, more females experienced a stroke than 
+              males. We used a bar chart to easily show the difference between how many females and males had a stroke. The bar chart
+              also shows how the older you are, the more likely you are to have a stroke. You can see this in the change of the y-axis 
+              numbers. As you increase in age using the slider widget, you can see how the y-axis grows and the bar graph goes higher 
+              to that increased count.")
     })
     
     output$summaryimplications <- renderText({
-        paste("This is where I elaborate on the implications of these findings.")
+        paste("A stroke is described by your brain cells dying due to your brain tissue not getting enough oxygen or nutrients because 
+              the blood supply to part of your brain has decreased or been blocked. This can be caused by a wide variety of factors. 
+              These findings form implications that things such as trauma and life experience can cause strokes, because the older you 
+              are, the more likely you are to have experienced more trauma in your life. Whether this is seen from a car crash or an 
+              intense surgery, overall, there is potential that due to this a stroke more likely. However, trauma can still occur at a 
+              young age, allowing for young people to still experience strokes. This pattern and finding also implies that things that 
+              females encounter or take in their life that men don’t could also potentially affect the likelihood of you having a stroke, 
+              such as birth control or hormone pills.")
     })
     
     output$summarydataquality <- renderText({
-        paste("This is where I describe the quality of the data.")
+        paste("For the most part, our data quality did provide strong and beneficial data. The wide variety in qualities and factors and
+              well as the large abundance of individuals included in the dataset provide more reassurance that the data is of reasonably 
+              good quality. However, there are definitely other factors that provide a larger probability of having a stroke that were not 
+              included in this dataset that could have been stronger factors or relating factors to these. This could cause viewers to think 
+              that these factors are increasing the likelihood of having a stroke, when in reality it is a different factor that actually is
+              a component that is causing it. For example, a factor not included in this dataset that increases your likelihood in having a 
+              stroke is if there is a history of stroke in your family. There could be many individuals in this dataset that this applies to 
+              that we are unaware of that play a larger role in them having had a stroke than the factors listed. The dataset also did not 
+              provide us with much information on how the data was collected and what the discussion process was for including certain individuals
+              within it. This makes it hard for us to know that the data process was unbiased. Due to this, we are unsure if the implementing of 
+              including certain individuals targeted certain population groups or potentially harmed any. ")
     })
     
     output$summaryfutureideas <- renderText({
-        paste("This is where future ideas about the project goes.")
+        paste("Going forward there are many more steps that could be taken to spread information on the likelihood of having a stroke. This 
+              information could benefit so many individuals in how they could benefit or change their lives and lifestyles to help increase 
+              their odds of not having a stroke in their future. ")
     })
 })

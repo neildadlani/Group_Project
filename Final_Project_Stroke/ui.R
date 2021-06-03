@@ -49,7 +49,7 @@ shinyUI(fluidPage(
         
         tabPanel("Male vs. Female", 
                  sidebarLayout(
-                     sidebarPanel(radioButtons("color", label=h3("Bar Graph Color"),
+                     sidebarPanel(radioButtons("color", label=h3("Bar Graph Color:"),
                                                choices = list("Blue"   = "royalblue",
                                                               "Violet" = "violet",
                                                               "Indigo" = "purple",
