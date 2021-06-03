@@ -5,9 +5,9 @@ account: ashade2-1942000
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 4224996
-bundleId: 4674590
+bundleId: 4675064
 url: https://ashade2-1942000.shinyapps.io/Final_Project_Stroke/
-when: 1622749980.92819
-lastSyncTime: 1622749980.92819
+when: 1622758116.90878
+lastSyncTime: 1622758116.90878
 asMultiple: FALSE
 asStatic: FALSE
