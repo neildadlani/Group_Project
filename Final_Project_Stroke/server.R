@@ -72,13 +72,21 @@ shinyServer(function(input, output) {
                     value = 50)
     })
     
+    output$bargraphDescription <- renderText({
+        paste("The graph above clearly displays the stroke occurrences in males and females. This distinction
+               is fairly important in understanding the probability, possibility and likeliness of a stroke occurring. 
+               One interested to view this dataset to incur and obtain knowledge regarding stroke must be made aware of this. The graph above is reactive towards the age category that one may adjust to view strokes in the particular age or age group. 
+               This is followed by the option to change the color of the graph. From the graph above, one enormous trend we can notice is until the age of 12, males have a greater chance at a stroke than females. However, from the ages 12 to 82, 
+               the number of strokes in female are always greater or equal the number of strokes in male. ")
+    })
+    
     
     #Plotting Scatter Graph for BMI against Average Glucose Level
     
     output$scatterplot <- renderPlot({
         ggplot(scatterplot_Data(), aes(x=avg_glucose_level,
                                        y= category))+
-            geom_point(color= "red")+
+            geom_point(color= "dodgerblue4")+
             labs(title = " Average Glucose Level and BMI Correlation",
                  x= "Average Glucose Level (mg/dL)", 
                  y= "BMI (kg/m^2)")+
@@ -100,7 +108,13 @@ shinyServer(function(input, output) {
                            choices = unique(bmi_data$category), selected = c(10:100))
     })
     
-    
+    output$scatterplotDescription <- renderText({
+        paste("This interactive graph displays a scatterplot showing the correlation between average glucose levels and BMI levels. 
+               The widgets on this page are checkboxes to select BMI values rounded to the nearest 10’s value, changing the BMI values that are being plotted. 
+               Looking at the graph, where people are having BMI values between 25-30 kg/m^2,  they are exhibiting higher average glucose levels of a range between 55 to 175 mg/dL. 
+               From research, we have learned that high glucose levels of 108 ml/dL and higher is a common early symptom for strokes which is supported by this graph. Since, a lot of the points for average glucose level are greater than 108 mg/ dL it shows that average glucose has an effect on strokes as proved by ur graphs and other research. From more research, we also found out that people who have BMI values characterized as overweight (25-30 kg/m^2) and obese (30 and higher kg/m^2) are more at risk to have a stroke. 
+               This is also supported by our graph because majority of the points plotted fall under the 25-30 BMI range, proving that it is a factor that greatly affects likelihood to have a stroke.")
+    })
     
     
     # Renders and plots Table
@@ -122,6 +136,13 @@ shinyServer(function(input, output) {
     })
     
     
+    output$smokingDescription <- renderText({
+        paste("This table is a representation of all the factors that either affect and/or are affected by the smoking status of a female. 
+               The idea behind this table is so that anyone who is interested in knowing whether factors like experiencing hypertension, or already having
+               heart disease can be influenced by  the smoking status of a person. The value 0 is correspondent to false and the value 1 to true. The table is an interactive element that allows the user to input different values amongst 6 different categories. 
+               This allows them to carry out specific data concentrated searches to give them their desired output.  ")
+    })
+    
     # Outputs homepage data 
     
     output$homepageData <- renderText({
@@ -134,9 +155,18 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
     output$homepageAudience <- renderText({
         paste0( "Audience:
     This dataset can be used by most people, however, it’s intended audience would be those who are interested in looking at their likelihood of having a stroke. 
+    Specifically those who believe are experiencing symptoms or are worried about strokes and wish to know the probability of a stroke based on several external factors 
+    that are targeted in this app.
     To do so, the dataset looks at various factors such as age, other diseases, smoking, etc. to help people effectively understand and predict their chances of having a stroke.")
         
         
+    })
+    
+    output$homepageQuestions <- renderText({
+        paste0 ("Questions that we will answer in this app :
+1. How age and gender play a role in increasing or decreasing the likeliness of a stroke?
+2. Exploring the correlation between change in BMI and average glucose level in the possibility of having a stroke?
+3. How does smoking influence the likeliness of suffering from a stroke?")
     })
     
     #Outputs About us Tab Data
@@ -161,8 +191,9 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
     })
     
     output$neildescription <- renderText({
-        paste("Neil Dadlani: A dedicated and self motivated freshman focusing to major in Informatics and Economics.
-               Born and raised in Dubai. Enjoys playing soccer on the weekends and cooking in the evenings. ")
+        paste("Neil Dadlani: A dedicated and self motivated freshman focusing to major in Informatics and Economics. 
+        I wish to further explore my interest in data science and cyber security .Born and raised in Dubai. 
+              Enjoys playing soccer on the weekends and cooking in the evenings. ")
     })
     
     output$summarypattern <- renderText({
@@ -180,7 +211,10 @@ We came across this dataset on Kaggle, which is a crowd-sourced platform to attr
               males. We used a bar chart to easily show the difference between how many females and males had a stroke. The bar chart
               also shows how the older you are, the more likely you are to have a stroke. You can see this in the change of the y-axis 
               numbers. As you increase in age using the slider widget, you can see how the y-axis grows and the bar graph goes higher 
-              to that increased count.")
+              to that increased count. In addition, smoking plays a massive negative contribution towards the probability of a stroke.
+              This is clearly evident upon filtering the data with the widget of smoking status to identify and notice as amount of 
+              smoking increases, the likeliness of stroke increases. Ergo, probability of a stroke is in proportion to the smoking stauts
+              (how frequently does one smoke)")
     })
     
     output$summaryimplications <- renderText({

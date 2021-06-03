@@ -17,6 +17,7 @@ shinyUI(fluidPage(
         tabPanel("Home",
                  tags$br(textOutput("homepageData")),
                  tags$br(textOutput("homepageAudience")),
+                 tags$br(textOutput("homepageQuestions")),
                  tags$br(),
                  tags$img(class="homepage",
                           src="homepage-image.jpg",
@@ -53,22 +54,28 @@ shinyUI(fluidPage(
                                                               "Orange" = "darkorange",
                                                               "Red"    = "red2"),
                                                selected = "royalblue"),
-                                  uiOutput("selectAge"),
-                                  textOutput("Number")
-                                  
+                                  uiOutput("selectAge")
                      ),
                      
                      # Show a plot of the generated distribution
                      mainPanel(
-                         plotOutput("genderPlot")
-                         
-                     )
+                         plotOutput("genderPlot"),
+                         textOutput("bargraphDescription"))
                  )),
-        tabPanel("Glucose vs. BMI", plotOutput("scatterplot"), uiOutput("category")),
+        tabPanel("Glucose vs. BMI", 
+                 sidebarLayout(
+                    sidebarPanel(textOutput("scatterplotDescription")),
+                    mainPanel(
+                        plotOutput("scatterplot"),
+                        uiOutput("category")),
+        )),
         tabPanel("Smoking Data",
-                 dataTableOutput("table_data"),
-                 uiOutput("smokingStatus")
-        ),
+                 sidebarLayout(
+                     sidebarPanel(uiOutput("smokingStatus"),
+                                  textOutput("smokingDescription")),
+                 mainPanel(
+                     dataTableOutput("table_data"))
+        )),
         tabPanel("Summary", 
                  tags$br(textOutput("summarypattern")),
                  tags$br(textOutput("summaryevidence")),
