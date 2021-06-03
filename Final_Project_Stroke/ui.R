@@ -5,26 +5,31 @@ library(tidyverse)
 library(ggplot2)
 library(plotly)
 
-# Define UI for application that draws a histogram
+# Define UI for application that makes our Final Project App
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Factors Affecting Stoke"),
-
+    titlePanel("Factors Affecting Stroke"),
+    
+    
+    # Defining Tabs
     tabsetPanel(
-        tabPanel("Home"),
+        tabPanel("Home",
+                 textOutput("homepageData"),
+                 tags$br(textOutput("homepageAudience"))),
         tabPanel("About Us", 
                  textOutput("annadescription"),
                  
-                 textOutput("anokhidescription"), 
+                 
+                 tags$br(textOutput("anokhidescription")), 
                  
                  textOutput("ishitadescription"),
                  
-                 textOutput("neildescription")),
+                 tags$br(textOutput("neildescription"))),
         
         tabPanel("Male vs. Female", 
                  sidebarLayout(
-                     sidebarPanel(radioButtons("color", label="Bar Graph Color",
+                     sidebarPanel(radioButtons("color", label=h3("Bar Graph Color"),
                                                choices = list("Violet" = "violet",
                                                               "Indigo" = "purple",
                                                               "Blue"   = "royalblue",
@@ -33,7 +38,8 @@ shinyUI(fluidPage(
                                                               "Orange" = "darkorange",
                                                               "Red"    = "red2"),
                                                selected = "violet"),
-                                  uiOutput("selectAge")
+                                  uiOutput("selectAge"),
+                                  textOutput("Number")
                                   
                      ),
                      
@@ -43,9 +49,9 @@ shinyUI(fluidPage(
                          
                      )
                  )),
-        tabPanel("Glucose", plotOutput("linegraph"), uiOutput("category")),
+        tabPanel("Glucose", plotOutput("scatterplot"), uiOutput("category")),
         tabPanel("Table",
-                 dataTableOutput("data2"),
+                 dataTableOutput("table_data"),
                  uiOutput("smokingStatus")
                  ),
         tabPanel("Summary")
