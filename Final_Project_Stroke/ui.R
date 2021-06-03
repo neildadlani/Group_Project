@@ -34,6 +34,7 @@ shinyUI(fluidPage(
                                                               "Red"    = "red2"),
                                                selected = "violet"),
                                   uiOutput("selectAge")
+                                  
                      ),
                      
                      # Show a plot of the generated distribution
@@ -42,7 +43,7 @@ shinyUI(fluidPage(
                          
                      )
                  )),
-        tabPanel("Glucose", plotOutput("linegraph")),
+        tabPanel("Glucose", plotOutput("linegraph"), uiOutput("category")),
         tabPanel("Table",
                  dataTableOutput("data2"),
                  uiOutput("smokingStatus")

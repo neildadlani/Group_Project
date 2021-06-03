@@ -6,13 +6,6 @@ library(plotly)
 
 data <- read.delim("healthcare-dataset-stroke-data.csv", sep= ",")
 
-# lolol <- data %>% 
-#     select(age, bmi, gender) 
-# 
-# lolol$groups <- cut(lolol$age, breaks=c(0,50,60,70, Inf))
-# table(cut(lolol$age, breaks=c(0,50,60,70,Inf)))
-# head(table)
-#     
 
 data <- data
 data[data == "N/A"] <- NA
@@ -21,43 +14,21 @@ na.omit(data)
 data1 <- data %>%
     select(-c(id)) %>%
     na.omit(bmi)
-
+##categorizes bmi
+data1 <- data1 %>%  
+    mutate(data1, category = round(as.numeric(data1$bmi)/10, digits=0)*10)
     
-
-
+#removes Unkown
 data <- data
 data[data == "Unknown"] <- NA
 na.omit(data)
 
+##data 2 is the table that is published
 data2 <- data %>% 
     select(gender, age, hypertension, heart_disease, smoking_status, stroke) %>% 
     na.omit(smoking_status)
-
-
-# data45to65 <- data1 %>% 
-#     select(-c(id)) %>% 
-    
-    # filter( age >= 45) %>% 
-    # filter( age <= 65) %>% 
-    # filter(bmi >= 30) %>% 
-    
     
 
-# data55to65 <- data %>% 
-#     select(-c(id)) %>% 
-#     filter( age >=55) %>% 
-#     filter(age <= 65) %>% 
-#     # filter(bmi >= 30)
-#     filter( avg_glucose_level >= 108.00)
-
-
-data1 <- data %>%
-    select(-c(id)) %>% 
-    na.omit(bmi)
-    # filter(gender %in% input$gender)
-    
-data1 <- data1 %>%  
-    mutate(data1, category = round(as.numeric(data1$bmi)/10, digits=0)*10)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
@@ -65,34 +36,8 @@ shinyServer(function(input, output) {
         data1 <- data%>% 
         na.omit(bmi) %>% 
         filter(gender %in% input$gender)
-        
-           
-             # select(-c(id)) %>% 
-            # filter( age >= 45) %>% 
-            # filter( age <= 65) %>% 
-            # group_by(avg_glucose_level) %>%
-            # arrange(age) %>%
-            # na.omit(bmi) %>% 
-            # sample_n(input$n, replace=TRUE)
-
 })
    
- 
-#we have to group bmi 
-
-    
-
-# output$scatterplot <- renderPlot({
-#     ggplot(strokeSample(), aes(x= bmi,
-#                                y= age,
-#                                na.rm = TRUE))+
-#         geom_bar(stat = "identity", fill = input$color)+
-#         #scale_x_continuous(breaks = 30:40)+
-#         # ylim(0,1)+
-#         labs(title = "BMI in correlation to other factors")
-#     
-# 
-# })
 
 output$distPlot <- renderPlot({
     ggplot(changed_data(), aes(gender))+
@@ -100,37 +45,16 @@ output$distPlot <- renderPlot({
         labs(title = "Stroke in Male vs Female")
 })
     
-
-
-output$chooseBMI <- renderUI({
-    checkboxGroupInput("gender", label="Choose BMI",
-                       choices=unique(data1$bmi), selected="Male")
-})
-
 output$linegraph <- renderPlot({
-    ggplot(data1, aes(x=category,
-                     y= avg_glucose_level))+
+    ggplot(data1, aes(x=avg_glucose_level,
+                     y= category))+
         #scale_x_continuous(breaks = 30:40)+
         #cut(as.numeric(data1$bmi), breaks=10 )+
         geom_point(fill =input$color)
         
 })
 
-changed_data <- reactive({
-    data %>% 
-        select(gender, stroke, age) %>% 
-        filter(age %in% input$years)
-})
-
-sample1 <- reactive({
-    data2 %>% 
-        select(gender, age, hypertension, heart_disease, smoking_status, stroke) %>% 
-        na.omit(smoking_status) %>% 
-        filter(smoking_status %in% input$status)
-})
-
-
-
+##slider for age
 output$selectAge <- renderUI({
     sliderInput("years",
                 "Age:",
@@ -139,15 +63,42 @@ output$selectAge <- renderUI({
                 value = 50)
 })
 
+changed_data <- reactive({
+    data %>% 
+        select(gender, stroke, age) %>% 
+        filter(age %in% input$years)
+})
+
+##doesn't render the plot
+sample1 <- reactive({
+    data2 %>% 
+        select(gender, age, hypertension, heart_disease, smoking_status, stroke) %>% 
+        na.omit(smoking_status) %>% 
+        filter(smoking_status %in% input$status)
+        
+    
+})
+
+widget_data <- reactive({
+    data1 %>% 
+        filter(category %in% input$category)
+})
+
+output$category <- renderUI({
+    checkboxGroupInput("category", label= "Choose BMI",
+                       choices = unique(data1$category), selected = 20)
+})
+
+##renders table
 output$data2 <- renderDataTable(
     data2
 )
 
+##checkbox for smoking status - need to work
 output$smokingStatus <- renderUI({
     checkboxGroupInput("status", label = "Choose Smoking Status",
                        choices = unique(data2$smoking_status), selected = "never smoked")
 })
-
 
 
 
@@ -171,12 +122,6 @@ output$neildescription <- renderText({
                Born and raised in Dubai. Enjoys playing soccer on the weekends and cooking in the evenings. ")
 })
 
-# output$scatterplot <- renderPlot({
-#     ggplot(data, aes(bmi, heart_disease))+
-#         geom_point(fill = input$color)+
-#         labs(title = "BMI vs heart disease")
-# 
-# 
 
 })
 
