@@ -95,8 +95,14 @@ output$linegraph <- renderPlot({
 })
 
 changed_data <- reactive({
-    stroke_data %>% 
-        select(gender, stroke, age) %>% 
+    data %>% 
+        select(gender, bmi, avg_glucose_level, stroke, age) %>% 
+        filter(age %in% input$years)
+})
+
+changed_data2 <- reactive({
+    data %>% 
+        select(bmi, avg_glucose_level, age) %>% 
         filter(age %in% input$years)
 })
 
@@ -125,6 +131,14 @@ output$ishitadescription <- renderText({
 output$neildescription <- renderText({
     paste0("Neil Dadlani: A dedicated and self motivated freshman focusing to major in Informatics and Economics.
                Born and raised in Dubai. Enjoys playing soccer on the weekends and cooking in the evenings. ")
+})
+
+output$glucosebmigraph <- renderPlot({
+    ggplot(changed_data(), aes(avg_glucose_level, bmi)) +
+        geom_point(stat = "identity") +
+        labs(x = "BMI", 
+             y = "Average Glucose Level", 
+             title = "How your BMI and Glucose Level Affect How Likely you are to have a Stroke")
 })
 
 # output$scatterplot <- renderPlot({

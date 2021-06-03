@@ -39,8 +39,17 @@ shinyUI(fluidPage(
                          
                      )
                  )),
-        tabPanel("Glucose", plotOutput("linegraph")),
+        tabPanel("Glucose", 
+                 sidebarLayout(
+                     sidebarPanel(
+                         uiOutput("selectAge")
+                     ),
+                     
+                     mainPanel(
+                         plotOutput("linegraph")),
+                         plotOutput("glucosebmigraph"))
+                 )
+        ),
         tabPanel("Interactive 3"),
         tabPanel("Summary")
-    )
 ))
