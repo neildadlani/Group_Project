@@ -16,17 +16,26 @@ img.annaimage {
 
 /*Centers and resizes image of Anokhi on about us page*/
 img.anokhiimage {
-  
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*Centers and resizes image of Ishita on about us page*/
 img.ishitaimage {
-  
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*Centers and resizes image of Neil on about us page*/
 img.neilimage {
-  
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*Places lightblue as the background color and centers all of the text*/

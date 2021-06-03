@@ -27,24 +27,23 @@ shinyUI(fluidPage(
                           src="anna-photo.jpg",
                           alt="Anna's Photo", 
                           align="center"),
-                 
                  tags$br(textOutput("anokhidescription")),
                  tags$img(class="anokhiimage",
-                          src="",
+                          src="anokhi-photo.jpg",
                           alt="Anokhi's Photo",
                           align="center"),
-                 
+                 tags$br(),
                  tags$br(textOutput("ishitadescription")),
                  tags$img(class="ishitaimage",
-                          src="",
+                          src="ishita-photo.jpg",
                           alt="Ishita's Photo",
                           align="center"),
-                 
+                 tags$br(),
                  tags$br(textOutput("neildescription")),
                  tags$img(class="neilimage",
-                          src="",
+                          src="neil-photo.jpg",
                           alt="Neil's Photo",
-                          align="center")
+                          align="center"), 
                  ),
         
         tabPanel("Male vs. Female", 
