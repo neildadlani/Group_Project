@@ -40,6 +40,6 @@ img.neilimage {
 
 /*Places lightblue as the background color and centers all of the text*/
 body {
-  background-image: url(lightblue.jpg);
+  background-image: url(background-image.jpg);
   text-align: center;
 }

@@ -19,7 +19,7 @@ shinyUI(fluidPage(
                  tags$br(textOutput("homepageAudience")),
                  tags$br(),
                  tags$img(class="homepage",
-                          src="background-image.jpg",
+                          src="homepage-image.jpg",
                           alt="Photo for Home Page")),
         tabPanel("About Us", 
                  tags$br(textOutput("annadescription")),
